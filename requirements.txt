@@ -1,0 +1,7 @@
+python-dotenv==1.0.1
+matplotlib==3.10.1
+smolagents==1.10.0
+streamlit==1.43.1
+chromadb==0.6.3
+langchain-openai==0.3.8
+jq==1.8.0
