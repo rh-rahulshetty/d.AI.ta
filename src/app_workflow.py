@@ -198,7 +198,7 @@ def generate_data_summary(code_result: Any, user_query):
             # to pass onto summarizer.
             if r > 10 or c > 10:
                 return None
-            data = str(data)
+            data = data.to_string(index=False)
         elif isinstance(code_result, Figure):
             # TODO: Use vision LLM to convert
             return None
