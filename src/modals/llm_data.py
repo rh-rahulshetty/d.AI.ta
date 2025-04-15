@@ -3,12 +3,12 @@ from typing import List, Dict, Any
 from pydantic import BaseModel
 
 
-SYS_PROMPT = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+DUMMY_PROMPT_TOKEN = "|%|"
+DUMMY_PROMPT = "{system}|%|{user}"
 
-{system}<|eot_id|><|start_header_id|>user<|end_header_id|>
 
-{user}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-"""
+class LLM_Client_Type(str, Enum):
+    openai = 'openai'
 
 
 # LLM Tasks

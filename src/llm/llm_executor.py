@@ -2,13 +2,14 @@ from typing import List
 import concurrent.futures
 
 from src.modals.llm_data import (
-    SYS_PROMPT,
+    DUMMY_PROMPT,
+    DUMMY_PROMPT_TOKEN,
     ModelResponse
 )
 
 from src.llm.llm_task import LLMTask
 from src.utils.logger import get_module_logger
-from src.llm.llm_client import get_openai_client
+from src.llm.llm_client import LLM_Client
 
 
 MAX_WORKERS = 20
@@ -41,7 +42,7 @@ class LLMTaskExecutor:
         task_prompts = task.prompt()
 
         # Prompt passed to LLM
-        request_prompt = SYS_PROMPT.format(
+        request_prompt = DUMMY_PROMPT.format(
             system=task_prompts['system'],
             user=task_prompts['user']
         )
@@ -49,18 +50,24 @@ class LLMTaskExecutor:
             **query_params
         )
 
-        logger.debug("LLM Prompt: %s", request_prompt)
+        sys_prompt, user_prompt = request_prompt.split(DUMMY_PROMPT_TOKEN)
+
+        logger.debug("System Prompt: %s", sys_prompt)
+        logger.debug("User Prompt: %s", user_prompt)
 
         # Initialize LLM Client
-        llm_client = get_openai_client()
+        llm_client = LLM_Client()
 
         # Run LLM Prompt
-        response = llm_client.invoke(request_prompt)
+        response = llm_client.invoke(
+            sys_prompt=sys_prompt,
+            user_prompt=user_prompt,
+        )
 
-        logger.debug("LLM Response: %s", response.content)
+        logger.debug("LLM Response: %s", response)
 
         model_response = task.postprocess(
-            response.content
+            response
         )
 
         return model_response
