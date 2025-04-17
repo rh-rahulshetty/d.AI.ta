@@ -7,6 +7,7 @@
 ## ✨ Features
 
 - RAG workflow: In-memory VectorDB for data source metadata management.
+- Plug-n-Play any Instruct-following model
 - Interactive UI in Streamlit
 - Data Format Supports including CSV, JSON, Log, ZIP, URL.
 - Multiple AI Agents/Workflow: Code-generation, Code Refinement, Data Source Filtering, Log Parsing and Summarizer.
@@ -18,10 +19,7 @@
 
 - Python 3.11+ (For local setup)
 - Docker or Podman (Optional)
-- LLM: [Llama 3.1](https://www.llama.com/docs/model-cards-and-prompt-formats/llama3_1)
-
-> Currently the framework has been tested with llama-3.1 model in specific, and other models might not work out-of-the-box. But it is the future roadmap to provide general support for different models.
-
+- Instruct-following models (e.g: llama3, phi4, granite3, etc)
 
 ### Local
 
@@ -29,7 +27,7 @@ Follow the below steps after cloning this repository.
 
 1. Rename `.default_env` to `.env`.
 
-2. Deploy or use OpenAPI-compatible **Llama 3.1** service. Update the `OPENAI_API_KEY`, `OPENAI_API_BASE`, `MODEL` parameters in the `.env` file.
+2. Deploy or use OpenAPI-compatible service. Update the `OPENAI_API_KEY`, `OPENAI_API_BASE`, `MODEL` parameters in the `.env` file.
 
 3. Setup Virtual Environment:
     ```
@@ -68,7 +66,6 @@ Follow the **step 1** and **step 2** from the Local setup to create the `.env` c
 
 This project would not be possible without research and project efforts from community:
 
-- [Meta LLAMA 3.1](https://www.llama.com/docs/model-cards-and-prompt-formats/llama3_1/)
 - [LIDA Research Paper](https://aclanthology.org/2023.acl-demo.11/)
 
 
