@@ -17,6 +17,7 @@ logger = get_module_logger(__name__)
 
 load_dotenv()
 
+st.set_page_config(page_title="D.AI.TA Web UI", page_icon=None, layout="centered")
 
 # Local Variables
 # Store vector_db per user session.
@@ -47,11 +48,22 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
 # Streamlit App
-st.title("dAIta")
+st.title("D.AI.TA: An LLM-powered AI Agent for Data Analysis, Insights and Visualizations")
 
-st.write("Full-fledged data analysis and plotting with Nautral Language.")
+st.write("This project leverages Large Language Models to simplify data analysis by enabling natural language interactions, automated insights, and visualizations—making data accessible and actionable for both technical and non-technical users.")
+
+cols = st.columns(4)
+
+with cols[0]:
+    st.link_button("Source Code", "https://github.com/rh-rahulshetty/d.AI.ta", icon=':material/code:', use_container_width=True)
+
+with cols[1]:
+    st.link_button("Give Feedback", "https://github.com/rh-rahulshetty/d.AI.ta/issues", icon=':material/forum:', use_container_width=True)
+
+
+st.warning('This is an experimental project. Please refrain from uploading any sensitive data unless you are hosting both the service and the LLM yourself.', icon="⚠️")
+
 
 urls = st.text_input("Source URLs for data separated by ,")
 
