@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import matplotlib.figure
 import pandas as pd
 import matplotlib
+import plotly.tools as tls
 
 import streamlit as st
 from src.modals.app_data import AppResult
@@ -88,7 +89,8 @@ def write_assistant_output(content: AppResult):
         if isinstance(content.model_result, pd.DataFrame):
             st.dataframe(content.model_result)
         elif isinstance(content.model_result, matplotlib.figure.Figure):
-            st.pyplot(content.model_result)
+            fig = tls.mpl_to_plotly(content.model_result)
+            st.plotly_chart(fig, use_container_width=True)
         else:
             st.write(content.model_result)
 

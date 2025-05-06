@@ -4,3 +4,4 @@ streamlit==1.43.1
 chromadb==0.6.3
 jq==1.8.0
 openai==1.74.0
+plotly==6.0.1
